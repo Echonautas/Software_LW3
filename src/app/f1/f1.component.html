@@ -1,0 +1,52 @@
+`<!-- <h2>Team {{f1.name | uppercase}} Details</h2>
+<div><span>id: </span>{{f1.id}}</div>
+<div><span>name: </span>{{f1.name}}</div>
+
+<div>
+    <label for="name">Team Name: </label>
+    <input id="name" [(ngModel)]="f1.name" placeholder="name">
+  </div> -->
+
+  <!-- <h2>Formula 1 Teams</h2>
+  <ul class="teams">
+    <li *ngFor="let f1 of teams">
+      <button type="button" [class.selected]="f1 === selectedTeam" (click)="onSelect(f1)">
+        <span class="badge">No. {{f1.id}}</span>
+        <span class="name">{{f1.name}}</span>
+      </button>
+    </li>
+  </ul> -->
+
+  <!-- <div *ngIf="selectedTeam">
+    <h2>{{selectedTeam.name | uppercase}} Details</h2>
+    <div>id: {{selectedTeam.id}}</div>
+    <div>
+      <label for="name">Team name: </label>
+      <input id="id" [(ngModel)]="selectedTeam.name" placeholder="name">
+    </div>
+  </div> -->
+  <!-- <app-team-details [f1]="selectedTeam"></app-team-details> -->
+
+<h2>Formula 1 Teams</h2>
+
+<div>
+  <label for="new-team">Team name: </label>
+  <input id="new-team" #teamName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(teamName.value); teamName.value=''">
+    Add Team
+  </button>
+</div>
+
+<ul class="teams">
+  <li *ngFor="let f1 of teams">
+    <a routerLink="/detail/{{f1.id}}">
+      <span class="badge">{{f1.id}}</span> {{f1.name}}
+    </a>
+    <!-- <div class="wrapper"> -->
+    <button type="button" class="delete" title="delete team"
+      (click)="delete(f1)"><span>Delete</span></button>
+      <!-- </div> -->
+  </li>
+</ul>
